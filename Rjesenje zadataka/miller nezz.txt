@@ -1,0 +1,16 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    int a,b,f;
+    cin>>a;
+    cin>>b;
+    
+    f=a*(9/5 +32);
+    cout>>f-b;
+    return 0;
+}
+

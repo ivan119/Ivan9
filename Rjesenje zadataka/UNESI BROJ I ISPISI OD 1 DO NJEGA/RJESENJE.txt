@@ -1,0 +1,19 @@
+#include "pch.h"
+#include <iostream>
+#include <string>	
+#include <iomanip>
+#include <cmath>
+using namespace std;
+
+int main(){
+          
+	int num;
+    cin >> num;
+                               
+	if (0 < num && num <=num) {
+		for (int i = 1; i <= num; i++) {
+		cout << i << endl;
+		}
+	}
+	return 0;
+}

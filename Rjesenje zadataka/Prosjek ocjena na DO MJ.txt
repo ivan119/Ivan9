@@ -1,0 +1,29 @@
+
+int main()
+{
+float broj, zbroj = 0, brojac = -1;
+bool provjera = false;
+
+	
+	do {
+		cin >> broj;
+		if (broj == 1) {
+			provjera = true;
+			
+		}
+		zbroj += broj;
+		brojac++;
+	
+	} while (broj != 0);
+
+	if(provjera)
+	{
+		cout << 1;
+	
+	}
+	else {
+
+		cout << setprecision(2) << fixed << zbroj / brojac;
+	}
+	
+} 

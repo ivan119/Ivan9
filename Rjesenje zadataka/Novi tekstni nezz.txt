@@ -1,0 +1,41 @@
+using namespace std;
+int main()
+{
+	/*int godine = 27;
+
+	cout << "Hello World!\n";
+	cout << "Iliti Dobar dan!\n";
+	cout << "Ime mi je Ivan\n";
+	cout << "Imam " << godine << " godina" << endl;
+
+	int broj1, broj2;
+
+	cout << "Unesite prvi broj: ";
+	cin >> broj1;
+
+	cout << "Unesite drugi broj: ";
+	cin >> broj2;
+
+	cout << broj1 << " i " << broj2 << endl;*/
+
+	/*cout << "Dobar dan.Vi mora da ste:\n";
+	string ime, prezime,podatci;
+	cin >> ime;
+	cin >> prezime;
+
+
+	cout <<"Vase ime je "<<ime<<" "<<prezime<<". Zadovoljstvo mi je biti vase racunalo!";
+
+	cin.ignore();
+	getline(cin, podatci);
+
+	cout << "Vasim podatci su: " << podatci;*/
+
+
+	cout << "x vrijednost           y vrijednost         izraz          rezultat" << endl;
+	cout << "10                     5                    x = y + 3      x = 8" << endl;
+	cout << "10                     5                    x = y - 3      x = 3" << endl;
+	cout << "10                     5                    x = y * 3      x = 25" << endl;
+	cout << "10                     5                    x = x / y      x = 2" << endl;
+	cout << "10                     5                    x = x % y      x = 0" << endl;
+}
