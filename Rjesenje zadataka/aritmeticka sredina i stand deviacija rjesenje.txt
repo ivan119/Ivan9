@@ -1,0 +1,18 @@
+#include "pch.h"
+#include <iostream>
+#include <iomanip>
+#include <math.h>
+using namespace std;
+int main()
+{
+	float a, b, c, d, e, as, sd;
+	cin >> a;
+	cin >> b;
+	cin >> c;
+	cin >> d;
+	cin >> e;
+	as = (a + b + c + d + e) / 5;
+	cout <<fixed<< setprecision(2) << as << endl;
+	sd = sqrt(( pow((as - a) ,2)+ pow((as - b) ,2 )+ pow((as - c), 2) + pow((as - d), 2) + pow((as - e), 2)) / 5);
+	cout<<fixed<<setprecision(2)<<sd;
+

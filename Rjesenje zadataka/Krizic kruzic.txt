@@ -1,0 +1,38 @@
+#include <iostream>
+#include <iomanip>
+#include <math.h>
+#include <iomanip>
+#include <math.h>
+using namespace std;
+int main()
+{
+	char polje[9] = { '1','2','3','4','5','6','7','8','9' };
+	int pozicija;
+	char znak = 'x';
+	for (int j = 0; j < 9; j++) {
+		system("cls");
+		for (int i = 1; i <= 9; i++) {
+			if (i % 3 != 0) {
+				cout << polje[i - 1] << " ";
+			}
+			else {
+				cout << polje[i - 1] << endl;
+			}
+
+		}
+		do {
+			cout << "Gdje? ";
+			cin >> pozicija;
+
+		} while (polje[pozicija - 1] == 'o' || polje[pozicija - 1] == 'x' || pozicija>9 || pozicija<1);
+
+		if (znak == 'x') {
+			polje[pozicija - 1] = 'x';
+			znak = 'O';
+		}
+		else {
+			polje[pozicija - 1] = 'o';
+			znak = 'x';
+		}
+	}
+}

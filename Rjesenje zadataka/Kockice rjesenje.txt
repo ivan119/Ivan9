@@ -1,0 +1,25 @@
+int main() {
+	int M, S;
+	cin >> M;
+	cin >> S;
+
+	if (M < 4) {
+		M = 7 - M;
+	}
+
+	if (S < 4) {
+		S = 7 - S;
+	}
+
+	if (M > S) {
+		cout << "mirko";
+	}
+	else if (S > M) {
+		cout << "slavko";
+	}
+	else{
+		cout << "nerijeseno";
+	}
+	
+
+}
