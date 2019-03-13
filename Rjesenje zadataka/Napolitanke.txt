@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int a, b, c, d, g, k;
+	cin >> a >> b >> c >> d;
+	g = a + (b * 40);
+	k = c + (d * 40);
+	cout << g - k << endl;
+	if ((g - k) % 40 == 0) {
+		cout << (g - k) / 40;
+	}
+	else {
+		cout<<((g - k) / 40) + 1;
+	}
+
+	}

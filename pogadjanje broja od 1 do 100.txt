@@ -1,0 +1,38 @@
+int main()
+{
+	int a;
+	int b;
+	int y;
+	char od;
+	int counter = 5;
+  
+		srand(time(NULL));
+		a = rand() % 100;
+		do
+		{
+
+		cin >> b;
+		if (a == b)
+		{
+			cout << a<<"Bravo pogodak" << b<< "osvoji si nista!!!";
+		}
+		if (a<b)
+		{
+			cout << "Vas broje je Manji Pokusajte ponovo" << endl;
+			
+		}
+		if (a>b)
+		{
+			cout << "Vas broj je veci Pokusajte ponovo" << endl;
+			
+		}
+		counter--;
+		
+		} while (a != b && counter > 0);
+		        if(counter==0)
+
+				{
+					cout << "Nemas pojma idi uci hello world! ili tako nesto broje je bio: " << a << endl;
+				}
+
+}

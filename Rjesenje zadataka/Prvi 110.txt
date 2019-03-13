@@ -1,0 +1,27 @@
+/*string za_spremanje;
+	string to_brojeve;
+	char n;
+	int brojevi;
+	cout << "unesite broj : " << endl;
+	cin >> brojevi;
+
+
+	
+	za_spremanje = "\n"  ;
+	
+	ofstream output;
+	output.open("brojevi.txt", ios::out | ios::app);
+	for (int i = 0; i < brojevi; i++)
+	{
+		cout << i;
+	}
+	output << za_spremanje;
+	output.close();
+
+	ifstream input("brojevi.tx");
+	string line;
+	while(input)
+	{ 
+		getline(input, line);
+		za_spremanje.push_back(line);
+	}*/

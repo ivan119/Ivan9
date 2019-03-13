@@ -1,0 +1,67 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <vector>
+#include <stdio.h>     
+#include <time.h>
+using namespace std;
+int main()
+{
+	char od1;
+	char od2;
+	int a;
+	int b;
+	do {
+		srand(time(NULL));
+		cout << "Mirko igraj" << "\t";
+
+		a = rand() % 6 + 1;
+		cout << a << endl;
+	
+
+		cout << "Slavko igraj" << "\t";
+		
+		b = rand() % 6 + 1;
+		cout << b << endl;
+		
+
+		if (a > b) {
+			cout << "Pobjednik je Mirko sa brojem " << a << endl;
+
+		}
+		if (a < b) {
+			cout << "Pobjednik je Slavko sa brojem " << b << endl;
+		}
+		if (a == b) {
+			cout << "Nerjeseno " << a << b << endl;
+		}
+
+
+		cout << "Zelite li dalje igrati (y/n)?";
+		cin >> od1;
+		string rezultati;
+
+		ofstream output;
+		output.open("rezultati.txt", ios::out | ios::app);
+		if (a > b) {
+			output << "Mirko je pobjedio s brojem " << a << endl;
+		}
+		if (a < b) {
+			output << "Slavko je pobjednik s brojem " << b << endl;
+		}
+		if (a == b) {
+			output << "Izjednaceno je s brojevima " << a <<" " << b << endl;
+		}
+		output.close();
+
+
+	} while (od1 =='y');
+
+
+
+
+	
+		
+	 
+
+}

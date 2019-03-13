@@ -1,0 +1,12 @@
+int  main () {
+	int *p_x = new int;
+	*p_x = 10;
+
+
+	cout << "Na adresi "<< p_x << "upisana je vrijednost"<<*p_x<< endl;
+	delete p_x;
+	p_x = nullptr;
+ 
+
+
+}

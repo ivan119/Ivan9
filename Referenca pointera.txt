@@ -1,0 +1,12 @@
+int  main () {
+	int x = 7;
+	int *p_x = nullptr;
+	p_x = &x;
+
+	cout << "x =" << x << endl;
+	cout << "p_x =" << p_x << endl;
+	cout << "&x =" << &x << endl;
+	cout << "*p_x =" << *p_x << endl;
+
+
+}
