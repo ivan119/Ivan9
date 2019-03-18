@@ -1,0 +1,10 @@
+int n, dig, dig2, dig3, dig4;
+	cin >> n;
+	dig = n % 10;
+	dig2 = (n / 100) %10;
+	dig3 = (n/10)%10;
+	dig4 = (n / 1000);
+
+	if (dig4 == 9) {
+		cout << dig4 + dig2 + 1 + dig3 + dig;
+	}
