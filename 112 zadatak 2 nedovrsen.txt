@@ -1,0 +1,135 @@
+// Strukture
+// Zadatak 2:
+//Napišite program koji æe omoguæiti administraciju studenata :
+//unos novih
+//brisanje(po ID - u)
+//izmjenu podataka o studentu
+//prikaz svih studenata
+//prikaz prosjeka po ispitu
+//prikaz najboljeg
+//prikaz najgoreg
+//prikaz po ID - u
+//sortiranje po ukupnom uspjehu
+//
+//struktura Student mora imati sljedeæe podatke :
+//ID, ime, prezime, spol, rezultat 1. kolokvija, rezultat 2. kolokvija, rezultat završnog ispita, ukupni uspjeh
+
+//
+
+#include "pch.h"
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+struct student
+{
+	int ID;
+	string ime;
+	string prezime;
+	char spol;
+	float  rezultat_1_kolokvij;
+	float rezultat_2_kolokvij;
+	float rezultat_zavrsni_ispit;
+	float ukupni_uspjeh;
+};
+
+student novi_student() {
+	student stud;
+	cout << "Unesite ID: ";
+	cin >> stud.ID;
+	cout << "Unesite ime: ";
+	cin >> stud.ime;
+	cout << "Unesite prezime: ";
+	cin >> stud.prezime;
+	cout << "Unesite spol: ";
+	cin >> stud.spol;
+	cout << "Unesite 1. kol: ";
+	cin >> stud.rezultat_1_kolokvij;
+	cout << "Unesite 2. kol: ";
+	cin >> stud.rezultat_2_kolokvij;
+	cout << "Unesite zavrsni ispit: ";
+	cin >> stud.rezultat_zavrsni_ispit;
+	stud.ukupni_uspjeh = (stud.rezultat_1_kolokvij + stud.rezultat_2_kolokvij + stud.rezultat_zavrsni_ispit) / 3;
+
+	return stud;
+}
+//void sortiranje_po_ukupnom_uspjehu() {
+//	cout<<
+//}
+
+void ispis_svih_studenata(vector <student> k) {
+	for (int i = 0; i < k.size(); i++)
+	{
+		cout << k[i].ID << "\t";
+		cout << k[i].ime << "\t";
+		cout << k[i].prezime << "\t";
+		cout << k[i].spol << "\t";
+		cout << k[i].rezultat_1_kolokvij << "\t";
+		cout << k[i].rezultat_2_kolokvij << "\t";
+		cout << k[i].rezultat_zavrsni_ispit << "\t";
+		cout << k[i].ukupni_uspjeh << endl;
+	}
+}
+
+void brisanje_studenta(vector <student> &j) {
+	int id;
+	cout << "Unesite ID studenta za brisanje: ";
+	cin >> id;
+	for (int i = 0; i < j.size(); i++) {
+		if (id == j[i].ID) {
+			j.erase(j.begin()+i);
+		}
+		
+	}
+}
+//void prikaz_ID(vector<student>&l) {
+//	int id;
+//	cout << "Unesite ID za prikaz: ";
+//	cin >> id;
+//	if (id == l[i].ID) {
+//		cout <<i;
+//		
+//
+//	}
+//	
+//}
+
+int main()
+{
+	int izbor;
+	vector <student> s;
+	do {
+		system("cls");
+		cout << "Izbornik\n0 - Izlaz\n1 - Unos novog studenta\n2 - Ispis svih studenata\n3 - Brisanje studenata\n4 - Prikaz po Idu\n";
+		cout << "Unesite svoj izbor: ";
+		cin >> izbor;
+		switch (izbor) {
+		case 1:
+			s.push_back(novi_student());
+			break;
+		case 2:
+			ispis_svih_studenata(s);
+			system("pause");
+			break;
+		
+		//case 3:
+		//	ispis_svih_studenata(s);
+		//	system("pause");
+		//	break;
+		case 3:
+			brisanje_studenta(s);
+			break;
+		//case 4:
+		//	prikaz_ID(s);
+		//	break;
+		case 0:
+			break;
+		default:
+			cout << "Niste unijeli ispravan izbor!" << endl;
+		}
+	} while (izbor != 0);
+
+	return 0;
+}

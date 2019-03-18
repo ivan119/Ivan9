@@ -1,0 +1,66 @@
+#include "pch.h"
+#include <iostream>
+#include <string>
+#include <ctime>
+#include <time.h>
+
+using namespace std;
+
+struct sb {
+	int x = 0;
+	int y = 0;
+	string naziv;
+};
+
+void crtanje_polja(sb brodic) {
+	for (int i = 0; i < 20; i++) {
+		for (int j = 0; j < 20; j++) {
+			if (i == brodic.x && j == brodic.y) {
+				cout << "O ";
+			}
+			else {
+				cout << "X ";
+			}
+		}
+		cout << endl;
+	}
+}
+
+void pomicanje_broda(sb &akaka) {
+	akaka.x = rand() % 20;
+	akaka.y = rand() % 20;
+}
+
+void pomicanje_lijevo(sb &q) {
+	if (q.x > 0) {
+		q.x -= 1;
+	}
+}
+
+sb novi_brod() {
+	sb novi_brod;
+	cout << "Unesite pocetnu koordinatu x: ";
+	cin >> novi_brod.x;
+	cout << "Unesite pocetnu koordinatu y: ";
+	cin >> novi_brod.y;
+	cout << "Unesite naziv broda: ";
+	cin >> novi_brod.naziv;
+	return novi_brod;
+}
+
+int main()
+{
+	srand(time(NULL));
+
+	sb brod = novi_brod();
+	crtanje_polja(brod);
+	char unos;
+	do {
+		cout << "Zelite li pomaknuti brod (d/n): ";
+		cin >> unos;
+		system("cls");
+		pomicanje_broda(brod);
+		crtanje_polja(brod);
+	} while (unos == 'd');
+	
+}
