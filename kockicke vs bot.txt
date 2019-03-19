@@ -1,0 +1,85 @@
+void kockice(int &novac,int &chipovi ) {
+	srand(time(NULL));
+
+
+	char od1;
+	char od2;
+	int a;
+	int b;
+	int c;
+	int d;
+	do {
+		if (chipovi == 0) {
+			cout << "Kupite chipove za igru!" << endl;
+			izbornik();
+		}
+		srand(time(NULL));
+		system("cls");
+		cout << "Igrate Prvi a Bot igra drugi" << endl;
+		cout << "____________________________" << endl;
+
+
+		a = rand() % 6 + 1;
+		cout << "Vasa prva ruka iznosi: ";
+		cout << a << endl;
+
+		b = rand() % 6 + 1;
+		cout << "Botova prva ruka iznosi: ";
+		cout << b << endl;
+		cout << "____________________________" << endl;
+
+
+		c = rand() % 6 + 1;
+		cout << "Vasa druga ruka iznosi: ";
+		cout << c << endl;
+
+		d = rand() % 6 + 1;
+		cout << "Botova druga ruka iznosi: ";
+		cout << d << endl;
+		cout << "____________________________" << endl;
+
+
+		if (a + c > b + d) {
+			cout << "Pobjedili ste bota sa  " << a + c << " vs " << b + d << endl;
+
+		}chipovi += 5;
+		if (a + c < b + d) {
+			cout << "Izgubili ste od bota sa  " << b + d << " vs " << a + c << endl;
+
+		}chipovi -= 5;
+		if (a + c == b + d) {
+			cout << "Izjednaceno je " << b + d << " = " << a + c << endl;
+
+		}
+		cout << "____________________________" << endl;
+
+
+
+
+		cout << "Zelite li dalje igrati (y/n)?";
+		cin >> od1;
+		string rezultati;
+
+		ofstream output;
+		output.open("Rezultati bacanja kockicke.txt", ios::out | ios::app);
+		if (a + c > b + d) {
+			output << "Pobjedili ste bota sa  " << a + c << " vs " << b + d << endl;
+
+		}
+		if (a + c < b + d) {
+			output << "Izgubili ste od bota sa  " << b + d << " vs " << a + c << endl;
+
+		}
+		if (a + c == b + d) {
+			cout << "Izjednaceno je " << b + d << " = " << a + c << endl;
+
+		}
+		output.close();
+
+
+	} while (od1 == 'y');
+	izbornik();
+	
+
+
+}

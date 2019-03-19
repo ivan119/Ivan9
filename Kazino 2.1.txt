@@ -1,0 +1,299 @@
+#include "pch.h"
+#include <iostream>
+#include <math.h>
+#include <cstdlib>
+#include <ctime>
+#include <string>
+#include <fstream>
+#include <vector>
+
+
+
+using namespace std;
+
+int novac = 100;
+int chipovi = 0;
+void izbornik();
+
+
+void vrtnja() {
+	char polje[4] = { 'O','+','-','X' };
+	char polje2[4] = { '+','-','X','O' };
+	char polje3[4] = { 'X','+','O','-' };
+	int a, b, c, d;
+	for (int i = 0; i < 20; i++)
+	{
+		a = rand() % 4;
+		b = rand() % 4;
+		c = rand() % 4;
+		d = rand() % 4;
+		system("cls");
+		cout << polje[a] <<"    "<< polje[b] << "    " << polje[c] << "    " << polje[d] << endl;
+		cout << polje2[a] << "    " << polje2[b] << "    " << polje2[c] << "    " << polje2[d] << endl;
+		cout << polje3[a] << "    " << polje3[b] << "    " << polje3[c] << "    " << polje3[d] << endl;
+
+		if (i == 19 && b == c && c == d)
+		{
+			cout << "  WIN! +100";
+			chipovi += 100;
+		}
+		if (i == 19 && a == b && b == c)
+		{
+			cout << " BIG WIN! +250";
+			chipovi += 250;
+		}
+		else if (i == 19 && a == b && b == c && c == d)
+		{
+			cout << "!!!!!JACKPOT!!!!    +1000 ";
+			chipovi += 1000;
+		}
+	}
+}
+void igra1() {
+	string unos;
+	do {
+		if (chipovi == 0) {
+			cout << "Kupite chipove za igru!" << endl;
+			izbornik();
+		}
+		chipovi -= 5;
+		vrtnja();
+		cout << endl << "Zelite li igrati opet? (da/ne) ";
+		cin >> unos;
+
+		if (unos == "da") {
+			continue;
+		}
+		else if (unos == "ne") {
+			izbornik();
+
+		}
+		else {
+
+			do {
+				cout << "Krivi odabir! Zelite li igrati ponovo ili izaci (da/ne) " << endl;
+				cin >> unos;
+			} while (unos != "da"&&unos != "ne");
+		}
+	} while (unos == "da");
+}
+void kockice() {
+	srand(time(NULL));
+
+
+	char od1;
+	char od2;
+	int a;
+	int b;
+	int c;
+	int d;
+	do {
+		if (chipovi == 0) {
+			cout << "Kupite chipove za igru!" << endl;
+			izbornik();
+		}
+		srand(time(NULL));
+		system("cls");
+		cout << "Igrate Prvi a Bot igra drugi" << endl;
+		cout << "____________________________" << endl;
+
+
+		a = rand() % 6 + 1;
+		cout << "Vasa prva ruka iznosi: ";
+		cout << a << endl;
+
+		b = rand() % 6 + 1;
+		cout << "Botova prva ruka iznosi: ";
+		cout << b << endl;
+		cout << "____________________________" << endl;
+
+
+		c = rand() % 6 + 1;
+		cout << "Vasa druga ruka iznosi: ";
+		cout << c << endl;
+
+		d = rand() % 6 + 1;
+		cout << "Botova druga ruka iznosi: ";
+		cout << d << endl;
+		cout << "____________________________" << endl;
+
+
+		if (a + c > b + d) {
+			cout << "Pobjedili ste bota sa  " << a + c << " vs " << b + d << endl;
+			chipovi += 5;
+		}
+		if (a + c < b + d) {
+			cout << "Izgubili ste od bota sa  " << b + d << " vs " << a + c << endl;
+			chipovi -= 5;
+		}
+		if (a + c == b + d) {
+			cout << "Izjednaceno je " << b + d << " = " << a + c << endl;
+
+		}
+		cout << "____________________________" << endl;
+
+
+
+
+		cout << "Zelite li dalje igrati (y/n)?";
+		cin >> od1;
+		string rezultati;
+
+		ofstream output;
+		output.open("Rezultati bacanja kockicke.txt", ios::out | ios::app);
+		if (a + c > b + d) {
+			output << "Pobjedili ste bota sa  " << a + c << " vs " << b + d << endl;
+
+		}
+		if (a + c < b + d) {
+			output << "Izgubili ste od bota sa  " << b + d << " vs " << a + c << endl;
+
+		}
+		if (a + c == b + d) {
+			cout << "Izjednaceno je " << b + d << " = " << a + c << endl;
+
+		}
+		output.close();
+
+
+	} while (od1 == 'y');
+	izbornik();
+
+}
+void karte(int &chipovi) {                           /*Nedovrsena karteee*/
+	string boja;
+	string znak;
+	vector <int> karte;
+	
+	int karta_igrac, karta_komp;
+	for (int i = 1; i <= 52; i++) {
+		karte.push_back(i);
+	}
+	karta_igrac = rand() % karte.size();
+	karte.erase(karte.begin() + karta_igrac);
+	cout << "Igrac:" << karta_igrac;
+	karta_komp = rand() % karte.size();
+	karte.erase(karte.begin() + karta_komp);
+	cout << "Komp: " << karta_komp;
+
+
+}
+void karta() {
+
+
+
+
+
+
+}
+void Igre(int &chip) {
+	int izbr;
+	cout << "Izaberite jedanu od igara: " << endl << "1.Black Jack " << endl << "2.Bacanje kockica  " << endl;
+	cin >> izbr;
+
+	if (izbr == 1) {
+		igra1();
+	}
+	else if (izbr == 2) {
+		kockice();
+	}
+	else if (izbr == 3) {
+		karte(chip);
+	}
+	else
+	{
+		do {
+			cout << "Krivi odabir";
+			cin >> izbr;
+		} while (izbr > 3 && izbr < 1);
+
+	}
+}
+
+void kupnja(int &novac, int &chipovi) {
+	int kolicina;
+	cout << "Koliko chipova Zelite? (1 kuna = 5 chipova): ";
+	cin >> kolicina;
+	novac -= kolicina / 5;
+	chipovi += kolicina;
+	izbornik();
+
+
+}
+void isplata(int &novac, int &chipovi) {
+	int kolicina;
+	cout << "Koliko chipova Zelite zamjeniti? ( 5 chipova = 1 kn): ";
+	cin >> kolicina;
+	chipovi -= kolicina;
+	novac += kolicina / 5;
+	izbornik();
+
+
+}
+void stanje(int novac, int chipovi) {
+	cout << "stanje novaca= " << " " << novac << "kn" << " stanje chipovi" << " " << chipovi << " " << endl;
+	cout << endl;
+	izbornik();
+}
+void izbornik() {
+	int izbor;
+
+	cout << "Izaberite jedan od programa: " << endl << "1.Stanje racuna " << endl << "2.Kupovina chipova " << endl << "3.Isplata novca " << endl << "4.Odabri igre" << endl << "5.Izlaz iz igre" << endl;
+	cin >> izbor;
+	system("cls");
+
+	if (izbor == 1) {
+		stanje(novac, chipovi);
+
+
+	}
+	else if (izbor == 2) {
+		kupnja(novac, chipovi);
+
+
+	}
+	else if (izbor == 3) {
+
+		isplata(novac, chipovi);
+
+	}
+	else if (izbor == 4) {
+		Igre(chipovi);
+
+	}
+	else if (izbor == 5) {
+		cout << "Dovidjenja" << endl;
+		cout << "__________________________" << endl;
+	
+		cout << "....." << endl;
+	
+		cout << "__________________________";
+	}
+	else
+	{
+		do {
+			cout << "Krivi odabir";
+			cin >> izbor;
+		} while (izbor > 3 && izbor < 1);
+
+	}
+
+
+}
+
+
+int main()
+{
+	srand(time(NULL));
+	cout << "******Dobrodosli u promociju novoga kasina!*****" << endl;
+	cout << "__________________________________________________" << endl;
+	cout << "****Imate besplatinih 100 kn !*****" << endl;
+	cout << "____________________________" << endl;
+	cout << "____________________________" << endl;
+	cout << "                            " << endl;
+	izbornik();
+
+
+
+
+}
