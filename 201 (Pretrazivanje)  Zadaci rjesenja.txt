@@ -1,0 +1,113 @@
+
+void prva() {
+	ifstream input;
+	vector <string> pojmovi;
+	string pojam;
+	input.open("pojmovi.txt");
+	while (input) {
+		input >> pojam;
+		pojmovi.push_back(pojam);
+	}
+	input.close();
+
+
+	for (int i = 0; i < pojmovi.size(); i++) {
+		cout << pojmovi[i] << endl;
+	}
+	cout << "Unesite pojam za pretragu: ";
+	cin >> pojam;
+	int pozicija = -1;
+	for (int i = 0; i < pojmovi.size(); i++) {
+		if (pojmovi[i] == pojam) {
+			pozicija = i;
+		}
+	}
+
+	if (pozicija == -1) {
+		cout << "Trazeni pojam nije nadjen!" << endl;
+	}
+
+
+
+	else {
+		cout << "Trazeni pojam nalazi se na poziciji " << pozicija << endl;
+	}
+
+
+
+
+
+}
+void druga_funkcija() {
+	ifstream input;
+	vector <string> pojmovi;
+	string pojam;
+	input.open("pojmovi.txt");
+	while (input) {
+		input >> pojam;
+		pojmovi.push_back(pojam);
+	}
+	input.close();
+
+	for (int i = 0; i < pojmovi.size(); i++) {
+		cout << pojmovi[i] << endl;
+	}
+	cout << "Unesite pojam za pretragu: ";
+	cin >> pojam;
+	vector<int> pozicija;
+	for (int i = 0; i < pojmovi.size(); i++) {
+		if (pojmovi[i] == pojam) {
+			pozicija.push_back(i);
+		}
+	}
+
+	if (pozicija.empty()) {
+		cout << "Trazeni pojam nije nadjen!" << endl;
+	}
+
+
+
+	else {
+		cout << "Trazeni pojam nalazi se na pozicijama ";
+		for (int i = 0; i < pozicija.size(); i++) {
+			cout << pozicija[i] << " ";
+		}
+	}
+
+
+}
+void pronalazak_broja() {
+	srand(time(NULL));
+	int broj;
+	broj = rand() % 100 + 1;
+	int sredina;
+	int pocetak = 1;
+	int kraj = 100;
+	int brojac = 0;
+	sredina = (pocetak + kraj) / 2;
+	cout << "Na pocetku \n";
+	cout << "sredina je: " << sredina;
+	cout << "\nzamisljeni broj je: " << broj << endl;
+	system("pause");
+	do {
+		brojac += 1;
+		cout << "Pokusali smo s " << sredina << endl;
+		if (broj < sredina)
+		{
+			cout << "Trazeni broj je manji od " << sredina << endl;
+			kraj = sredina;
+		}
+		else if (broj > sredina)
+		{
+			cout << "Trazeni broj je veci od " << sredina << endl;
+			pocetak = sredina;
+		}
+		sredina = (pocetak + kraj) / 2;
+	} while (sredina != broj && pocetak < kraj);
+	if (sredina == broj) {
+		cout << "Racunalo je pronaslo trazeni broj!" << endl;
+	}
+	cout << "Zamisljeni broj smo pronasli u " << brojac + 1 << " krugova." << endl;
+
+
+}

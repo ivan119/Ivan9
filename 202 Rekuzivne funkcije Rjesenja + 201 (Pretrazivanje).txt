@@ -1,0 +1,203 @@
+#include <iostream>
+#include <math.h>
+#include <cstdlib>
+#include <ctime>
+#include <string>
+#include <fstream>
+#include <vector>
+
+using namespace std;
+
+void prva() {
+	ifstream input;
+	vector <string> pojmovi;
+	string pojam;
+	input.open("pojmovi.txt");
+	while (input) {
+		input >> pojam;
+		pojmovi.push_back(pojam);
+	}
+	input.close();
+
+
+	for (int i = 0; i < pojmovi.size(); i++) {
+		cout << pojmovi[i] << endl;
+	}
+	cout << "Unesite pojam za pretragu: ";
+	cin >> pojam;
+	int pozicija = -1;
+	for (int i = 0; i < pojmovi.size(); i++) {
+		if (pojmovi[i] == pojam) {
+			pozicija = i;
+		}
+	}
+
+	if (pozicija == -1) {
+		cout << "Trazeni pojam nije nadjen!" << endl;
+	}
+
+
+
+	else {
+		cout << "Trazeni pojam nalazi se na poziciji " << pozicija << endl;
+	}
+
+
+
+
+
+}
+void druga_funkcija() {
+	ifstream input;
+	vector <string> pojmovi;
+	string pojam;
+	input.open("pojmovi.txt");
+	while (input) {
+		input >> pojam;
+		pojmovi.push_back(pojam);
+	}
+	input.close();
+
+	for (int i = 0; i < pojmovi.size(); i++) {
+		cout << pojmovi[i] << endl;
+	}
+	cout << "Unesite pojam za pretragu: ";
+	cin >> pojam;
+	vector<int> pozicija;
+	for (int i = 0; i < pojmovi.size(); i++) {
+		if (pojmovi[i] == pojam) {
+			pozicija.push_back(i);
+		}
+	}
+
+	if (pozicija.empty()) {
+		cout << "Trazeni pojam nije nadjen!" << endl;
+	}
+
+
+
+	else {
+		cout << "Trazeni pojam nalazi se na pozicijama ";
+		for (int i = 0; i < pozicija.size(); i++) {
+			cout << pozicija[i] << " ";
+		}
+	}
+
+
+}
+void pronalazak_broja() {
+	srand(time(NULL));
+	int broj;
+	broj = rand() % 100 + 1;
+	int sredina;
+	int pocetak = 1;
+	int kraj = 100;
+	int brojac = 0;
+	sredina = (pocetak + kraj) / 2;
+	cout << "Na pocetku \n";
+	cout << "sredina je: " << sredina;
+	cout << "\nzamisljeni broj je: " << broj << endl;
+	system("pause");
+	do {
+		brojac += 1;
+		cout << "Pokusali smo s " << sredina << endl;
+		if (broj < sredina)
+		{
+			cout << "Trazeni broj je manji od " << sredina << endl;
+			kraj = sredina;
+		}
+		else if (broj > sredina)
+		{
+			cout << "Trazeni broj je veci od " << sredina << endl;
+			pocetak = sredina;
+		}
+		sredina = (pocetak + kraj) / 2;
+	} while (sredina != broj && pocetak < kraj);
+	if (sredina == broj) {
+		cout << "Racunalo je pronaslo trazeni broj!" << endl;
+	}
+	cout << "Zamisljeni broj smo pronasli u " << brojac + 1 << " krugova." << endl;
+
+
+}
+
+
+void od_manjeg(int n) {
+	if (n > 1) {
+		od_manjeg(n - 1);
+	}
+	cout << n << " ";
+}
+
+void od_veceg(int n) {
+	cout << n << " ";
+	n--;
+	if (n > 0)
+	{
+		od_veceg(n);
+	}
+		
+}
+
+int fakt(int n) {
+	if (n == 1) {
+	return 1;
+	}else{
+		return n * fakt(n - 1);
+		}
+	}
+int fib(int n)
+{
+	if (n==0 || n==1) {
+		return n;
+	}
+	else
+	{
+		return fib(n - 1) + fib(n - 2);
+	}
+
+}
+
+void fibniz(int n) {
+	if (n>0) {
+		fibniz(n - 1);
+	}
+	cout << fib(n)<<" " ;
+}
+
+int zbrajanje(int n) {
+	if (n == 0) {
+		return 0;
+	}
+	return (zbrajanje(n - 1) + n);
+}
+	
+
+
+int main() {
+	int n;
+
+	cout << "Unesite neki broj : ";
+	cin >> n;
+	cout << "Od manjeg: " << endl;
+	od_manjeg(n);
+	cout << endl;
+	cout << "Od veceg : " << endl;
+	od_veceg(n);
+	cout << endl;
+	cout << "Faktortijela : " << endl;
+	cout << fakt(n);
+	cout << endl;
+	cout << "Fibonacciev broj : " << endl;
+	cout << fib(n);
+	cout << endl;
+	cout << "Fibonacciev niz : " << endl;
+	fibniz(n);
+	cout << endl;
+	cout << "Zbroj rekuzivne funkcije : " << endl;
+	cout << zbrajanje(n) << endl;
+	cout << "Kraj";
+
+
+	
+}
