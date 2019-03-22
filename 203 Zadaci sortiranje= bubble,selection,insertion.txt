@@ -1,0 +1,137 @@
+void BubbleSrot(int lista[],int velicina)
+{
+	int temp;
+	bool bilaZamjena = true;
+
+	for (int i = 0; bilaZamjena == true; i++)
+	{
+		bilaZamjena = false;
+		for (int j = 0; j < velicina - 1 - i; j++)
+		{
+			if (lista[j] > lista[j + 1])
+			{
+				temp = lista[j];
+				lista[j] = lista[j + 1];
+				lista[j + 1] = temp;
+				bilaZamjena = true;
+           	}  
+     	}
+	}
+}
+
+void selectionSort(int lista[], int velicina)
+{
+	int min;
+	int index;
+	bool bilaZamjena = true;
+
+	for (int i = 0; bilaZamjena == true; i++)
+	{
+		bilaZamjena = false;
+		for (int i = 0; i < velicina - 1; i++)
+		{
+			 min = i;
+			for (int j = i + 1; j < velicina; j++)
+			{
+				if (lista[j] < lista[min])
+				{
+					swap(lista[j], lista[i]);
+				}
+				
+			}
+		}
+	}
+}
+
+void InsertionSort(int lista[], int velicina) 
+{
+    int i, key, j;
+	for (i = 1; i < velicina; i++)
+	{
+		key = lista[i];
+		j = i - 1;
+
+		while (j >= 0 && lista[j] > key)
+		{
+			lista[j + 1] = lista[j];
+			j = j - 1;
+
+		}
+		lista[j + 1] = key;
+	}
+}
+
+
+
+
+
+	
+
+
+int main() {
+
+	srand(time(NULL));
+
+	int polje[20];
+	for (int i = 0; i < 20; i++)
+	{
+		 polje[i]= rand()% 100 + 1;
+	}
+	for(int i=0;i<20;i++)
+	{
+		cout << "Brojevi su: " << polje[i] << endl;
+		
+	}
+	system("PAUSE");
+	system("CLS");
+	BubbleSrot(polje, 20);
+	for (int i = 0; i < 20; i++)
+	{
+		cout << "Sortirani BubbleSortom : " << polje[i] << endl;
+	}	system("PAUSE");
+	system("CLS");
+
+
+	for (int i = 0; i < 20; i++)
+	{
+		polje[i] = rand() % 100 + 1;
+	}
+	for (int i = 0; i < 20; i++)
+	{
+		cout << "Brojevi su: " << polje[i] << endl;
+
+	}
+	system("PAUSE");
+	system("CLS");
+	
+	selectionSort(polje, 20);
+	for (int i = 0; i < 20; i++)
+	{
+		cout << "Sortirani Selection Sortom : " << polje[i] << endl;
+	}	
+	system("PAUSE");
+	system("CLS");
+	for (int i = 0; i < 20; i++)
+	{
+		polje[i] = rand() % 100 + 1;
+	}
+	for (int i = 0; i < 20; i++)
+	{
+		cout << "Brojevi su: " << polje[i] << endl;
+
+	}
+	system("PAUSE");
+	system("CLS");
+
+	InsertionSort(polje, 20);
+
+	for (int i = 0; i < 20; i++)
+	{
+		cout << "Sortirani Insertion Sortom : " << polje[i] << endl;
+	}
+	system("PAUSE");
+	system("CLS");
+
+	
+
+}
