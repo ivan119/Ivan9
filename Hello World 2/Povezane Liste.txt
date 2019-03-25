@@ -1,0 +1,135 @@
+//Zadatak 1.: Napišite funkciju za prolazak (ispis) elemenata u listi
+//Zadatak 2.: Napišite funkciju za brisanje elementa s kraja liste
+//
+
+#include "pch.h"
+#include <iostream>
+
+using namespace std;
+
+struct Node
+{
+	int value;
+	Node *next;
+};
+
+void insertElementFront(Node *&head, int value)    //dodavanje elementa na poèetak liste
+{
+	Node *temp = new Node;
+	temp->value = value;
+	temp->next = head;
+	head = temp;
+}
+
+void insertElementEnd(Node *&head, int value)    //dodavanje elementa na kraj liste
+{
+	Node *n = new Node;
+	n->value = value;
+	n->next = nullptr;
+
+	Node *temp = head;
+	if (temp == nullptr)
+	{
+		temp = n;
+		head = temp;
+	}
+	else
+	{
+		while (temp->next != nullptr)
+		{
+			temp = temp->next;
+		}
+		temp->next = n;
+	}
+}
+
+void ispisElemenataListe(Node *head)    //ispis elemenata u listi   // Zadatak 1.
+{
+
+	Node *temp = head;
+
+	if (temp == NULL)
+	{
+		cout << "Lista je prazna!\n";
+	}
+	else
+	{
+		while (temp != NULL)
+		{
+			cout << temp->value << "\t";
+			temp = temp->next;
+		}
+		cout << endl;
+	}
+}
+
+void deliteHead(Node *&head)  // funkcija brisanja elementa s poèetka liste
+{
+	Node *temp = head;
+
+	if (temp != 0)
+	{
+		head = temp->next;
+		delete temp;
+	}
+}
+
+void deliteEnd(Node *&head)  // funkcija brisanja elementa s kraja liste   // Zadatak 2.
+{
+	Node *temp = head;
+
+	if (temp->next == nullptr)
+	{
+		head = nullptr;
+		delete temp;
+	}
+	else
+	{
+		Node *predzadnji = head;
+		while (temp->next != nullptr)
+		{
+			predzadnji = temp;
+			temp = temp->next;
+		}
+		delete temp;
+		predzadnji->next = nullptr;
+	}
+}
+
+int main()
+{
+	Node *head = nullptr;
+	int izbor, broj;
+	do {
+		system("cls");
+		cout << "1 - Unos na pocetak liste\n2 - Unos na kraj liste\n3 - Ispis liste\n4 - Brisanje elementa s pocetka liste\n5 - Brisanje elementa s kraja liste\n0 - Izlaz\n";
+		cout << "Unesite svoj izbor: ";
+		cin >> izbor;
+		switch (izbor) {
+		case 0:
+			break;
+		case 1:
+			cout << "Unesite element: ";
+			cin >> broj;
+			insertElementFront(head, broj);
+			break;
+		case 2:
+			cout << "Unesite element: ";
+			cin >> broj;
+			insertElementEnd(head, broj);
+			break;
+		case 3:
+			ispisElemenataListe(head);
+			cout << endl;
+			system("pause");
+			break;
+		case 4:
+			deliteHead(head);
+			break;
+		case 5:
+			deliteEnd(head);
+			break;
+		}
+	} while (izbor != 0);
+
+}
