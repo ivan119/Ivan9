@@ -1,0 +1,85 @@
+#include "pch.h"
+#include <iostream>
+#include <math.h>
+#include <cstdlib>
+#include <ctime>
+#include <string>
+#include <fstream>
+#include <vector>
+
+using namespace std;
+
+//Klase_i_objekti 04_04_2019
+
+class Racun {
+protected:
+	int vrijeme = 5;
+	int broj_racuna = 1;
+	float stanje_racuna = 2300.99;
+public:
+	int get_vrijeme() {
+		return vrijeme;
+	}
+	void set_strc(float iznos) {
+		stanje_racuna = stanje_racuna + iznos;
+	}
+	float get_strc() {
+		return stanje_racuna;
+	}
+	void set_pod(float iznos) {
+		stanje_racuna = stanje_racuna - iznos;
+	}
+	float get_pod() {
+		return stanje_racuna;
+	}
+};
+
+class st_rac :public Racun {
+private:
+	float kamata = 5;
+public:
+	void izracun_kamate() {
+		set_strc(get_strc() + (get_strc() * (kamata / 100) * get_vrijeme()));
+	}
+};
+
+class tek :public Racun {
+	float kamata = 0.05;
+public:
+	void izracun_kamate() {
+		stanje_racuna += stanje_racuna * (kamata/100)  * vrijeme;
+	
+	}
+};
+
+
+
+
+
+//Main Function
+int main()
+{
+	tek tekuci;
+	float iznos;
+	cout << "Dobrodosli na bankomat" << endl << "Izabrali ste funkciju za upaltu novaca " << endl << "Vase trenutno stanje racuna: " << tekuci.get_strc() << " Eura " << endl << endl;
+	cout << "Unesite vas polog: ";
+	cin >> iznos;
+	tekuci.set_strc(iznos);
+	cout << "Uplatili ste :" << iznos << " Eura " << endl;
+	cout << "Vase trenutno stanje je: " << tekuci.get_strc() << " Eura " << endl;
+	cout << "Koliko novaca zelite podicit?: " << endl;
+	cin >> iznos;
+	tekuci.set_pod(iznos);
+	cout << "Podigli ste: " << iznos << " Eura" << endl;
+	cout << "Vase trenutno stanje je: " << tekuci.get_pod() << " Eura" << endl;
+
+	system("pause");
+
+	cout << "Vas Tekuci racun ima : " << tekuci.get_strc() << endl;
+	tekuci.izracun_kamate();
+
+	cout << "Nakon pet godina vas Stedni ce imati : " << tekuci.get_strc() << endl;
+	
+
+	system("pause");
+}

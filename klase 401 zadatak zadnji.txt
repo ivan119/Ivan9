@@ -1,0 +1,32 @@
+class Puska {
+private:
+	string boja;
+	string metaka;
+	int met;
+public:
+	void set_boja(string boj);
+	string get_boja();
+};
+
+void Puska::set_boja(string boj){
+	boja = boj;
+}
+ 
+string Puska::get_boja() {
+	return boja;
+}
+
+
+
+//Main Function
+int main()
+{
+	string boja;
+	cout << "Unesite boju koju zelite :";
+	cin >> boja;
+
+	Puska puska;
+	puska.set_boja(boja);
+	
+	cout << "Vasa boja je: " << puska.get_boja();
+}
