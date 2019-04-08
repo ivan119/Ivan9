@@ -1,0 +1,210 @@
+// ConsoleApplication36.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include "pch.h"
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+//Class
+class BMI {
+protected:
+	float newHeight;
+	string newName;
+	double newWeight;
+public:
+	//Default Counstructor
+	BMI();
+
+	//Overload Counstructor
+	////BMI(string, int, double); 
+
+	//Destructor
+	/*~BMI();*/
+
+	string getName();
+	float getHeight();
+	double getWeight();
+
+	void setWeight(double);
+	void setName(string);
+	void setHeight(float);
+	double calculateBMI();
+
+};
+//Class Functions
+BMI::BMI() {
+	newHeight = 0;
+	newWeight = 0.0;
+}
+//BMI::BMI(string name, int height, double weight) {
+//	newName = name;
+//	newHeight = height;
+//	newWeight = weight;
+//}
+//BMI::~BMI() {
+//
+//}
+string BMI::getName() {
+	return newName;
+}
+float BMI::getHeight() {
+	return newHeight;
+}
+double BMI::getWeight() {
+	return newWeight;
+}
+
+void BMI::setName(string name) {
+	newName = name;
+}
+void BMI::setHeight(float height)
+{
+	newHeight = height;
+}
+void BMI::setWeight(double weight) {
+	newWeight = weight;
+}
+//BMI Metric
+double BMI::calculateBMI() {
+	return newWeight / ((newHeight / 100)*(newHeight / 100));
+}
+
+//Subclass
+class Student :public BMI {
+private:
+	int Ocijena;
+	int id;
+
+public: 
+	int getOcijena();
+	void setOcijena(int ocijena);
+	int getid();
+	void setid(int ID);
+
+};
+
+int Student::getOcijena(){
+	return Ocijena;
+}
+void Student::setOcijena(int ocijena) {
+	Ocijena = ocijena;
+}
+int Student::getid() {
+	return id;
+}
+void Student::setid(int ID) {
+	id = ID;
+}
+
+//Main Function
+int main() {
+	string Name;
+	float Height;
+	double Weight;
+	int Ocijena;
+	int id;
+	int izbor;
+
+	do {
+		cout << "Dobrodosli u BMI App" << endl;
+		cout << "Unesite vase ime: ";
+		cin >> Name;
+		cout << "Unesite vasu visinu:(cm): ";
+		cin >> Height;
+		cout << "Unesite vasu tezinu:(kg): ";
+		cin >> Weight;
+		system("cls");
+
+		//BMI Student_1(Name, Height, Weight);
+		BMI Student_1;
+		Student Student_Id_Ocijena;
+
+		Student_1.setName(Name);
+		Student_1.setHeight(Height);
+		Student_1.setWeight(Weight);
+
+		cout << "Ime: ";
+		cout << Student_1.getName() << endl;
+		cout << "Visoki ste: ";
+		cout << Student_1.getHeight() << " cm" << endl;
+		cout << "Imate: ";
+		cout << Student_1.getWeight() << " kg" << endl;
+		cout << "BMI: " << Student_1.calculateBMI() << endl;
+
+		if (Student_1.calculateBMI() < 18.5) {
+			cout << " Vas BMI je nizak trebate unositi vise kalorija! " << endl;
+		}
+		else if (Student_1.calculateBMI() >= 18.5 && Student_1.calculateBMI() <= 24.9) {
+			cout << " Vas BMI je savrsen! Full ste zdravi:)) Unosite dovoljno kalorija " << endl;
+		}
+		else if (Student_1.calculateBMI() >= 25 && Student_1.calculateBMI() <= 29.9) {
+			cout << " Imate Poviseni BMI! Smanjite unos kalorija!! Pokusajte se baviti sportom!" << endl;
+		}
+		else if (Student_1.calculateBMI() >= 30) {
+			cout << " Pod hitno smrsavite! Vas BMI je  daleko iznad prosjecnog " << endl;
+		}
+		cout << endl << endl;
+		system("pause");
+		system("cls");
+
+		cout << "Unos drugi podataka: " << endl;
+		cout << "Unesite vas ID: ";
+		cin >> id;
+		cout << "Unesite vase ime: ";
+		cin >> Name;
+		cout << "Unesite vasu visinu:(cm): ";
+		cin >> Height;
+		cout << "Unesite vasu tezinu:(kg): ";
+		cin >> Weight;
+		cout << "Unesite ocijenu: ";
+		cin >> Ocijena;
+		cout << endl;
+
+		Student_Id_Ocijena.setid(id);
+		Student_Id_Ocijena.setName(Name);
+		Student_Id_Ocijena.setHeight(Height);
+		Student_Id_Ocijena.setWeight(Weight);
+		Student_Id_Ocijena.setOcijena(Ocijena);
+
+		cout << "ID studenta: " << Student_Id_Ocijena.getid() << endl;
+		cout << "Ime: " << Student_Id_Ocijena.getName() << endl;
+		cout << "Visina studenta: " << Student_Id_Ocijena.getHeight() << " cm" << endl;
+		cout << "Tezina studenta: " << Student_Id_Ocijena.getWeight() << " kg" << endl;
+		cout << "Ocijena studenta: " << Student_Id_Ocijena.getOcijena() << endl;
+		cout << "Vas BMI: " << Student_Id_Ocijena.calculateBMI();
+
+		if (Student_Id_Ocijena.calculateBMI() < 18.5) {
+			cout << " Vas BMI je nizak trebate unositi vise kalorija! " << endl;
+		}
+		else if (Student_Id_Ocijena.calculateBMI() >= 18.5 && Student_Id_Ocijena.calculateBMI() <= 24.9) {
+			cout << " Vas BMI je savrsen! Full ste zdravi:)) Unosite dovoljno kalorija " << endl;
+		}
+		else if (Student_Id_Ocijena.calculateBMI() >= 25 && Student_Id_Ocijena.calculateBMI() <= 29.9) {
+			cout << " Imate Poviseni BMI! Smanjite unos kalorija!! Pokusajte se baviti sportom!" << endl;
+		}
+		else if (Student_Id_Ocijena.calculateBMI() >= 30) {
+			cout << " Pod hitno smrsavite! Vas BMI je daleko iznad prosjecnog " << endl;
+		}
+
+
+		cout << "Za ponovno racunanje izaberite 1 za izlaz izaberite 0 ";
+		cin >> izbor;
+		system("cls");
+
+	} while (izbor != 0);
+}
+
+
+
+// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
+// Debug program: F5 or Debug > Start Debugging menu
+
+// Tips for Getting Started: 
+//   1. Use the Solution Explorer window to add/manage files
+//   2. Use the Team Explorer window to connect to source control
+//   3. Use the Output window to see build output and other messages
+//   4. Use the Error List window to view errors
+//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
+//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
